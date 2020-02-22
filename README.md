@@ -39,11 +39,13 @@ rpbar is a pretty simple C++ project. It consists of two executables:
 Compilation and usage
 ---------------------
 
+
 Obviously, you should have a working g++ toolchain. You'll also need Xlib and
 Xft. If you're using Ubuntu or Debian, what you need is in the
 `build-essential`, `libx11-dev` and `libxft-dev` apt packages.
 Then you should:
 
+1. `git submodule init` to pull the `toml11` git submodule.
 1. Type `make` to compile.
 1. Put `rpbar` and `rpbarsend` in your path.
 1. Add the following to your `.ratpoisonrc`:
