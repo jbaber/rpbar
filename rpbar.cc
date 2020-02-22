@@ -219,23 +219,6 @@ RpBar::get_font_height()
 }
 
 
-const char* RpBar::rpbar_bordercolor() {
-  return RPBAR_BORDERCOLOR;
-}
-const char* RpBar::rpbar_bgcolor() {
-  return RPBAR_BGCOLOR;
-}
-const char* RpBar::rpbar_fgcolor() {
-  return RPBAR_FGCOLOR;
-}
-const char* RpBar::rpbar_mainbgcolor() {
-  return RPBAR_MAINBGCOLOR;
-}
-const char* rpbar_mainfgcolor() {
-  return RPBAR_MAINFGCOLOR;
-}
-
-
 void RpBar::init_gui() {
   // This function has some copy+paste from A. Garbe's dmenu
   // (http://tools.suckless.org/dmenu)
@@ -245,9 +228,9 @@ void RpBar::init_gui() {
   screen = DefaultScreen(display);
   root = RootWindow(display, screen);
   XSetWindowAttributes window_attribs;
-  bordercolor = get_color(RpBar::rpbar_bordercolor());
-  bgcolor = get_color(RpBar::rpbar_bgcolor());
-  mainbgcolor = get_color(RpBar::rpbar_mainbgcolor());
+  bordercolor = get_color(RPBAR_BORDERCOLOR);
+  bgcolor = get_color(RPBAR_BGCOLOR);
+  mainbgcolor = get_color(RPBAR_MAINBGCOLOR);
   init_font(RPBAR_FONT_STR);
   window_attribs.override_redirect = 1;
   window_attribs.background_pixmap = ParentRelative;
@@ -350,10 +333,10 @@ void RpBar::refresh(){
     const char * fg_color = NULL;
     if (last_char=='*') {
       bg = mainbgcolor;
-      fg_color = rpbar_mainfgcolor();
+      fg_color = RPBAR_MAINFGCOLOR;
     } else {
       bg = bgcolor;
-      fg_color = RpBar::rpbar_fgcolor();
+      fg_color = RPBAR_FGCOLOR;
     }
 
     // shave off characters until the width is acceptable
