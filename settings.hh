@@ -18,6 +18,7 @@
 // affects padding in left and right
 #define RPBAR_BUTTON_MARGIN         10
 
+/* Defaults */
 // Look at wmii or vim colorschemes for inspiration
 #define RPBAR_BORDERCOLOR           "#666666"
 #define RPBAR_BGCOLOR               "#080808"
