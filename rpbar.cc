@@ -219,16 +219,16 @@ RpBar::get_font_height()
 }
 
 
-const char* rpbar_bordercolor() {
+const char* RpBar::rpbar_bordercolor() {
   return RPBAR_BORDERCOLOR;
 }
-const char* rpbar_bgcolor() {
+const char* RpBar::rpbar_bgcolor() {
   return RPBAR_BGCOLOR;
 }
-const char* rpbar_fgcolor() {
+const char* RpBar::rpbar_fgcolor() {
   return RPBAR_FGCOLOR;
 }
-const char* rpbar_mainbgcolor() {
+const char* RpBar::rpbar_mainbgcolor() {
   return RPBAR_MAINBGCOLOR;
 }
 const char* rpbar_mainfgcolor() {
@@ -245,9 +245,9 @@ void RpBar::init_gui() {
   screen = DefaultScreen(display);
   root = RootWindow(display, screen);
   XSetWindowAttributes window_attribs;
-  bordercolor = get_color(rpbar_bordercolor());
-  bgcolor = get_color(rpbar_bgcolor());
-  mainbgcolor = get_color(rpbar_mainbgcolor());
+  bordercolor = get_color(RpBar::rpbar_bordercolor());
+  bgcolor = get_color(RpBar::rpbar_bgcolor());
+  mainbgcolor = get_color(RpBar::rpbar_mainbgcolor());
   init_font(RPBAR_FONT_STR);
   window_attribs.override_redirect = 1;
   window_attribs.background_pixmap = ParentRelative;
@@ -353,7 +353,7 @@ void RpBar::refresh(){
       fg_color = rpbar_mainfgcolor();
     } else {
       bg = bgcolor;
-      fg_color = rpbar_fgcolor();
+      fg_color = RpBar::rpbar_fgcolor();
     }
 
     // shave off characters until the width is acceptable
