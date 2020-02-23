@@ -614,6 +614,7 @@ int main(int argc, const char *argv[]) {
     if (verbose) {
       printf("Loading config file %s\n", config_filename.c_str());
     }
+    const auto data = toml::parse(config_filename);
   }
 
   rpbar.run();

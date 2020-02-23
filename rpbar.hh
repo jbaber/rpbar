@@ -35,6 +35,7 @@
 #include <X11/keysym.h>
 
 #include "settings.hh"
+#include "toml11/toml.hpp"
 
 namespace rpbar
 {
