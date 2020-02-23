@@ -567,9 +567,55 @@ void RpBar::select_window(int win_ix) {
 
 } /* end namespace rpbar */
 
+
+static void print_help_and_quit(const char* bin_name) {
+  printf("Usage: %s [config_file.toml]\n", bin_name);
+  exit(0);
+}
+
+
 int main(int argc, const char *argv[]) {
   setlocale(LC_CTYPE, "");
   rpbar::RpBar rpbar;
+
+  /* Primitive argument parsing for now */
+  std::string config_filename = "";
+  bool verbose = false;
+  if (argc == 1) {
+    config_filename = "";
+  }
+  else if (argc == 2) {
+    if (std::string(argv[1]) == "--help") {
+      print_help_and_quit(argv[0]);
+    }
+    else {
+      config_filename = std::string(argv[1]);
+    }
+  }
+  else if (argc == 3) {
+    if (std::string(argv[1]) == "-v") {
+      verbose = true;
+      config_filename = std::string(argv[2]);
+      printf("Loading config file %s\n", argv[2]);
+    }
+    else if (std::string(argv[2]) == "-v") {
+      verbose = true;
+      printf("Loading config file %s\n", argv[2]);
+      config_filename = std::string(argv[1]);
+    }
+    else {
+      print_help_and_quit(argv[0]);
+    }
+  }
+  else {
+    print_help_and_quit(argv[0]);
+  }
+
+  /* Change `rpbar` based on `config_filename` */
+  if (config_filename != "") {
+
+  }
+
   rpbar.run();
 
   // TODO catch exceptions? It wouldn't accomplish much.
