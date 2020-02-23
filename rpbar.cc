@@ -596,11 +596,9 @@ int main(int argc, const char *argv[]) {
     if (std::string(argv[1]) == "-v") {
       verbose = true;
       config_filename = std::string(argv[2]);
-      printf("Loading config file %s\n", argv[2]);
     }
     else if (std::string(argv[2]) == "-v") {
       verbose = true;
-      printf("Loading config file %s\n", argv[2]);
       config_filename = std::string(argv[1]);
     }
     else {
@@ -613,7 +611,9 @@ int main(int argc, const char *argv[]) {
 
   /* Change `rpbar` based on `config_filename` */
   if (config_filename != "") {
-
+    if (verbose) {
+      printf("Loading config file %s\n", config_filename.c_str());
+    }
   }
 
   rpbar.run();
